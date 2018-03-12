@@ -1,0 +1,84 @@
+package com.data;
+
+import javax.jdo.annotations.PersistenceCapable;
+
+import javax.jdo.annotations.Persistent;
+@PersistenceCapable
+public class CustomerJDO {
+	
+
+	  //  @PrimaryKey
+	  //  @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+	 //   private Key key;
+
+	    @Persistent
+	    private String Name;
+	    @Persistent
+	    private String mobileNumber;
+	    @Persistent
+	    private String email;
+	    @Persistent
+	    private String Address; 
+	    @Persistent
+	   private String Id;
+	    private String AccountEmail;
+	  //getter and setter methods
+	    
+		public String getAccountEmail() {
+			return AccountEmail;
+		}
+
+		public void setAccountEmail(String accountEmail) {
+			AccountEmail = accountEmail;
+		}
+
+		public String getId() {
+			return Id;
+		}
+
+		public void setId(String id) {
+			Id = id;
+		}
+
+		public String getName() {
+			return Name;
+		}
+
+		public void setName(String name) {
+			this.Name = name;
+		}
+
+		public String getMobileNumber() {
+			return mobileNumber;
+		}
+
+		public void setMobileNumber(String mobileNumber) {
+			this.mobileNumber = mobileNumber;
+		}
+
+		
+		public String getAddress() {
+			return Address;
+		}
+
+		public void setAddress(String address) {
+			Address = address;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+
+	    
+	}
+
+	
+
+	
+
+
