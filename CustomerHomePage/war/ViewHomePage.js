@@ -6,14 +6,35 @@ var LogIn = Backbone.View.extend({
 	events  :  {
      "click #Add" :  "LogIn", 
      "click  #SignUp" : "ShowSignUp",
-     "click  #Create"  : "SingUpFunction"
+     "click  #Create"  : "SingUpFunction",
+     "click  #Back"   : "ShowLogIn",
+     "keypress" : "keyAction"
+	},
+	keyAction: function(e) {
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+	    if (keycode == '13' && $('#Add').is(':visible')) {
+	   this.LogIn();
+	    }
+	    if (keycode == '13' && $('#Create').is(':visible')) {
+	        this.SingUpFunction();
+	    }
+        },
+	ShowLogIn : function(){
+	  var template = _.template($('#TemplateLogIn').html(),{});   
+	   $("#LogIn").html(template);
+	   $("#LogInRow").show();
+	   $("#Back").hide();
+	   $("#SignUpRow").hide();
+	   $("#NewUser").show();
+	   $("#title").text("Sign In");
 	},
 	ShowSignUp : function (){
     var template = _.template($('#TemplateLogIn').html(),{});   
     this.$el.html(template);
     $("#LogInRow").hide();
+   $("#Back").show();
+   $("#NewUser").hide();
     $("#title").text("Sign Up");
-
 	},
 	SingUpFunction : function (){
 		var email = $("#UserName").val();
@@ -28,7 +49,6 @@ if( ($.trim(email).length > 0) && ($.trim(password).length > 0))
    signIn.save(null,{
 	   success: function(model, xhr, opts) 
 	   { 
-		  
 		   if(xhr == 200){
 				
 		        $(location).attr('href','Home.jsp');

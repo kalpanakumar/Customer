@@ -52,7 +52,7 @@ public void SignUp (@RequestBody String data,HttpServletResponse response, HttpS
 		 
 		 PrintWriter out = response.getWriter();
 			PersistenceManager pm = PMF.get().getPersistenceManager();
-			System.out.println(data);
+			//System.out.println(data);
 			String Email = new JSONObject(data).getString("Email");
 			HttpSession session = request.getSession();
 			session.setAttribute("AccountEmail", Email);

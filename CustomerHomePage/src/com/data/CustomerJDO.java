@@ -1,5 +1,8 @@
 package com.data;
 
+import java.util.HashMap;
+
+
 import javax.jdo.annotations.PersistenceCapable;
 
 import javax.jdo.annotations.Persistent;
@@ -13,11 +16,35 @@ public class CustomerJDO {
 
 	    @Persistent
 	    private String Name;
+//	    @Persistent
+//	    private String mobileNumber;
+//	    
+//	    @Persistent
+//	    private String email;
+//	    @Persistent
+//	    private String[] email;
+//	    @Persistent
+//	    private String[] Label;
 	    @Persistent
-	    private String mobileNumber;
-	    @Persistent
-	    private String email;
-	    @Persistent
+	    HashMap< String,String> mobileNumber;
+	    public HashMap<String, String> getMobileNumber() {
+			return mobileNumber;
+		}
+		public void setMobileNumber(HashMap<String, String> mobileNumber) {
+			this.mobileNumber = mobileNumber;
+		}
+
+		@Persistent
+	    HashMap< String,String> email;
+	    
+	    public HashMap<String, String> getEmail() {
+			return email;
+		}
+		public void setEmail(HashMap<String, String> email) {
+			this.email = email;
+		}
+
+		@Persistent
 	    private String Address; 
 	    @Persistent
 	   private String Id;
@@ -48,13 +75,13 @@ public class CustomerJDO {
 			this.Name = name;
 		}
 
-		public String getMobileNumber() {
-			return mobileNumber;
-		}
-
-		public void setMobileNumber(String mobileNumber) {
-			this.mobileNumber = mobileNumber;
-		}
+//		public String getMobileNumber() {
+//			return mobileNumber;
+//		}
+//
+//		public void setMobileNumber(String mobileNumber) {
+//			this.mobileNumber = mobileNumber;
+//		}
 
 		
 		public String getAddress() {
@@ -65,15 +92,21 @@ public class CustomerJDO {
 			Address = address;
 		}
 
-		public String getEmail() {
-			return email;
-		}
-
-		public void setEmail(String email) {
-			this.email = email;
-		}
-
-
+//		public String[] getEmail() {
+//			return email;
+//		}
+//
+//		public void setEmail(String[] email) {
+//			this.email = email;
+//		}
+//
+//		public String[] getLabel() {
+//			return Label;
+//		}
+//
+//		public void setLabel(String[] label) {
+//			Label = label;
+//		}
 	    
 	}
 

@@ -22,7 +22,9 @@ var CustomerModel = Backbone.Model.extend({
 default: {
 Name: "",
 Email :"",
+Label :"",
 MobileNo: "",
+MobileLable:"",
 Address: "",
 id : ""
 }
@@ -32,7 +34,9 @@ var UpdateCustomerModel = Backbone.Model.extend({
 default: {
 Name: "",
 Email :"",
+Label: "",
 MobileNo: "",
+MobileLable:"",
 Address: "",
 id : ""
 }

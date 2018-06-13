@@ -24,7 +24,9 @@
 position:relative;
 z-index: 1;
   }
-
+input {
+border-style: none;
+}
   #background {
    position: fixed;
     top: 0px;
@@ -34,13 +36,16 @@ z-index: 1;
     background-color: #F5F5F5;    
 }
 
-
 #AddCustomerDiv{
-  border-bottom: 1px solid  #696969;
+ 
     padding: 30px 0 20px 0px;
     margin-top: 70px;
     margin-right : -20px;
     width: 300px;
+}
+.NewLabel{
+
+    cursor: pointer;
 }
 #newCustomer {
     border-radius: 3px;
@@ -71,6 +76,7 @@ z-index: 1;
 }
 #logOut{
 float : right;
+cursor: pointer;
 }
 ul {
   list-style-type: none;
@@ -84,6 +90,18 @@ ul li{
 ul li:hover{
       background: #E1E7EB;
 }
+#DetailsTemplate tr td input:hover{
+      background: #ccccc ;
+}
+
+#DetailsTemplate :hover input {
+background: #E1E7EB;
+}
+#DetailsTemplate input{
+    height:30px;
+border-radius: 3px;
+}
+
 .popUp {
   position:absolute;
     top: 120px;
@@ -99,25 +117,89 @@ ul li:hover{
     border-radius: 6px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     white-space: normal;
+    
 }
 
-.inputBox {
-  padding: 8px;
+
+table td {
+    padding: 8px;
+}
+.DetailsLable {
+color: #999;
+}
+.glyphicon-plus-sign {
+    color: #27C3BB;
+    cursor: pointer;
+    font-size: 18px;
+     margin:5px;
+}
+.glyphicon-minus-sign{
+   color: #27C3BB;
+    cursor: pointer;
+    font-size: 18px;
+      margin:5px;
+}
+html { overflow-x: hidden; }
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+   
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
 
 </style>
    </head>
    
    <body>
-   <div class="container-fluid">
-<div id  = "header" class="well">  <bold> Customers <bold> <button   id="logOut" type="button"><a href="/Logout" >Log Out</a></button> </div>
+   
+<div id  = "header" class="well">  <bold> Customers <bold> <div  id ="logOut" class="dropdown">
+  <span class="glyphicon glyphicon-user" ></span>
+  <div class="dropdown-content" style="margin-left:-60px">
+    <a href="Logout" style="text-decoration: none">Logout</a>  
+  </div>
+</div> </div>
   <div  class="row">
     <div  class="col-md-4">
     <div id="background" >
     <div id = "AddCustomerDiv" > 
     <span id="newCustomer" > + </span>
     </div>
+    <hr style="margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid ;"">
       <div class="popUp">
       </div>
       <div id ="test">
@@ -130,10 +212,10 @@ ul li:hover{
      
     </div>
     <div class="col-md-4">
-     <h4> Appointments </h4>
+     
     </div>
   </div>
-</div>
+
 
    </body>
    </script>
@@ -151,62 +233,130 @@ ul li:hover{
 
 
 <script type ="text/template"  class="PopUp_Template">
-<table style="width:100%" class="EnterDetails">
-   <tr >
+<table cellspacing="40" style="width:100%; padding: 0;" class="EnterDetails">
+   <tr>
     <td class ="inputBox" >Add New Customer </td> 
   </tr>
   <tr>
-    <td class ="inputBox"><input type="text" id="Name" placeholder = "Name" /></td> 
-  </tr>
-  <tr>  
-    <td  class ="inputBox"><input type="text" id="Email" placeholder = "Email"/></td>
-  </tr>
+
+    <td class ="inputBox"><input style ="width: 78%" type="text" id="Name" placeholder = "Name" /></td> 
+  <td></td>
+</tr>
+  <tr> 
+
+    <td class ="inputBox"><input style ="width: 78%" class="InputextraField" name="InputEmail[]" type="text" id="Email" placeholder = "Email" /><span class="glyphicon glyphicon-plus-sign">  </span></td> 
+<td><select name="Myselect" class="myselect">
+  <option value="Home">Home</option>
+  <option value="Work">Work</option>
+  <option id ="Others" value="Other">Other</option>
+</select></td>
+</tr>
   <tr>
-    <td class ="inputBox"><input type="text" id="MobileNo" placeholder = "Mobile No."/></td>
-  </tr>
+    <td class ="inputBox"><input style ="width: 78%" class="InputextraField" name="InputMobile[]" type="text" id="MobileNo" placeholder = "Mobile No."/><span class="glyphicon glyphicon-plus-sign">  </span></td>
+  <td  width="20px"><select name="Myselect" class="myselect">
+  <option value="Home">Home</option>
+  <option value="Work">Work</option>
+  <option value="Other">Other</option>
+</select> </td>
+</tr>
   <tr>
-   
-    <td class ="inputBox"><input type="text" id="Address" placeholder = "Address"/></td>
-    
-  </tr>
+
+    <td class ="inputBox"><input style ="width: 78%" type="text" id="Address" placeholder = "Address"/></td>
+  <td></td>
+</tr>
   <tr>
-    <td class ="inputBox"><input  class="btn btn-primary" type="submit" id="Add" value = "Add Customer"/></td>
+    <td class ="inputBox"><input  class="btn btn-primary" type="submit" id="Add" value = "Add"/></td>
     <td  ><input  class="btn btn-primary" type="submit" id="Cancel" value = "Cancel"/></td>
   </tr>
 </table>
 
  </script>
  <script type ="text/template" class="Model-list-template">
-<table style="width:100%" id ="DetailsTemplate">
-  
+<table cellspacing="40" style="width:100%; padding: 0;" id ="DetailsTemplate">
+ <tr>
+    <td class="DetailsLable">Name</td>
+    <td><input type="text" id="DetailsName" name="fname" size="28" value = <@= Name @> ></td>
+  </tr>
+<tr>
+
+<@ if(Label.length == 0) { @>
+<td class="DetailsLable">Email<select class="myselect">
+  <option value="Home">Home</option>
+  <option value="Work">Work</option>
+  <option class="Others" value="Other">Other</option>
+</select></td>
+    <td><input class="extraField" type="text" id="DetailsEmail" name="Email[]" size="28"  ><span class="glyphicon glyphicon-plus-sign">  </span></td>
+  </tr>
+<@  }else  { @>	
+<td class="DetailsLable">Email<select class="myselect">
+  <option selected Value=<@=Label[0]@>><@=Label[0]@></option>
+  <option value="Home">Home</option>
+  <option value="Work">Work</option>
+  <option class="Others" value="Other">Other</option>
+</select></td>
+    <td><input class="extraField" type="text" id="DetailsEmail" name="Email[]" size="28" value = <@= Email[0] @> ><span class="glyphicon glyphicon-plus-sign">  </span></td>
+  </tr>
+<@ } @>
+<@ for(var i=1;i < Email.length; i++ ) { 
+if($.trim(Email[i]).length > 0) { @>
   <tr>
-    <td>Name</td>
-    <td><input type="text" id="DetailsName" name="fname" value = <@= Name @> ></td>
-    
+  <td class="DetailsLable">Email<select class="myselect">
+  <option selected Value=<@=Label[i] @>><@=Label[i] @></option>
+  <option value="Home">Home</option>
+  <option value="Work">Work</option>
+  <option class="Others" value="Other">Other</option>
+</select></td>
+    <td><input class="extraField" type="text" id="DetailsEmail" name="Email[]" size="28" value = <@= Email[i] @> ><span class="glyphicon glyphicon-minus-sign">  </span></td>
+  </tr>
+	<@ } }@>
+<@if(MobileLable.length == 0) { @>
+<tr>
+    <td class="DetailsLable">Mobile<select class="myselect">
+  <option value="Home">Home</option>
+  <option value="Work">Work</option>
+  <option class="Others" value="Other">Other</option>
+</select></td>
+</td>
+    <td><input class="extraField" type="text" id="DetailsMobile_No" name="MobileNo[]" size="28"  ><span id ="test" class="glyphicon glyphicon-plus-sign">  </span></td>
   </tr>
   <tr>
-    <td>Email</td>
-    <td><input type="text" id="DetailsEmail" name="fname" value = <@= Email @> ></td>
-    
+<@  }else  { @>
+    <td class="DetailsLable">Mobile<select class="myselect">
+  <option selected Value=<@=MobileLable[0] @>><@=MobileLable[0] @></option>
+  <option value="Home">Home</option>
+  <option value="Work">Work</option>
+  <option class="Others" value="Other">Other</option>
+</select></td>
+</td>
+    <td><input class="extraField" type="text" id="DetailsMobile_No" name="MobileNo[]" size="28" value = <@= MobileNo[0] @> ><span id ="test" class="glyphicon glyphicon-plus-sign">  </span></td>
   </tr>
+<@ } @>
+<@ for(var i=1;i < MobileNo.length; i++ ) {
+if($.trim(MobileNo[i]).length > 0) {@>
   <tr>
-    <td>Mobile No.</td>
-    <td><input type="text" id="DetailsMobile_No" name="fname" value = <@= MobileNo @> ></td>
-    
+  <td class="DetailsLable">Mobile<select class="myselect">
+  <option selected Value=<@=MobileLable[i] @>><@=MobileLable[i] @></option>
+  <option value="Home">Home</option>
+  <option value="Work">Work</option>
+  <option class="Others" value="Other">Other</option>
+</select></td>
+    <td><input class="extraField" type="text" id="DetailsMobile_No" name="MobileNo[]" size="28" value = <@= MobileNo[i] @> ><span class="glyphicon glyphicon-minus-sign">  </span></td>
   </tr>
+	<@  }}@>
   <tr>
-    <td>Address</td>
-    <td><input type="text" id="DetailsAddress" name="fname" value = <@= Address @> ></td>
+    <td class="DetailsLable">Address</td>
+    <td><input " type="text" id="DetailsAddress" name="fname" size="28" value = <@= Address @> ></td>
     
   </tr>
   <tr>
     <td><button  class="update  btn-primary"> Update </button></td>
-    <td><button  class="delete  btn-primary"> Delete </button></td>
+    <td><button   class="delete  btn-primary"> Delete </button></td>
     
   </tr>
 </table>
-
-      </script>
+ </script>
+ 
+ 
       <script>
 	 	_.templateSettings = {
 	 		    interpolate: /\<\@\=(.+?)\@\>/gim,
